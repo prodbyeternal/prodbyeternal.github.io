@@ -419,6 +419,232 @@
     .ios-card { padding: 16px; }
     .slider-well { width: 290px; }
   }
+
+  #theme-picker {
+    position: fixed;
+    top: 34px;
+    right: 12px;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 9px;
+    background: rgba(4, 9, 16, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+  #theme-picker label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #d8e2f0;
+  }
+  #theme-select {
+    max-width: 190px;
+    color: #f8fbff;
+    background: rgba(18, 27, 39, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 6px;
+    padding: 6px 26px 6px 8px;
+    font: 13px -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .theme-start {
+    display: none;
+  }
+  body.theme-oobe,
+  body.theme-deltarune {
+    background: #05070d;
+  }
+  body.theme-oobe #status-bar,
+  body.theme-oobe #header-bar,
+  body.theme-oobe #main-content,
+  body.theme-oobe #bottom-tray,
+  body.theme-oobe #droplets-layer,
+  body.theme-deltarune #status-bar,
+  body.theme-deltarune #header-bar,
+  body.theme-deltarune #main-content,
+  body.theme-deltarune #bottom-tray,
+  body.theme-deltarune #bg-layer,
+  body.theme-deltarune #droplets-layer {
+    display: none;
+  }
+  body.theme-oobe #bg-layer {
+    opacity: 1;
+    background:
+      radial-gradient(circle at 18% 64%, rgba(61, 105, 255, 0.42) 0, rgba(31, 55, 164, 0.24) 21%, transparent 48%),
+      radial-gradient(circle at 74% 42%, rgba(0, 148, 255, 0.34) 0, rgba(0, 74, 155, 0.22) 26%, transparent 54%),
+      linear-gradient(135deg, #071a49 0%, #051a36 44%, #03111f 100%);
+    animation: oobeDrift 16s ease-in-out infinite alternate;
+  }
+  body.theme-oobe #theme-start-oobe,
+  body.theme-deltarune #theme-start-deltarune {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 96px 24px 48px;
+    text-align: center;
+  }
+  body.theme-oobe #theme-start-oobe {
+    font-family: "Segoe UI Variable", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .winui-card {
+    width: min(470px, calc(100vw - 48px));
+    padding: 34px 38px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background: rgba(241, 247, 255, 0.08);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  }
+  .oobe-orb {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(10px);
+    opacity: 0;
+    background: radial-gradient(circle at 35% 35%, rgba(104, 168, 255, 0.6), rgba(31, 65, 182, 0.26) 46%, transparent 72%);
+    animation: orbFloat 13s ease-in-out infinite;
+  }
+  .oobe-orb:nth-child(1) { width: 34vw; height: 34vw; left: -8vw; top: 52vh; animation-delay: 0s; }
+  .oobe-orb:nth-child(2) { width: 28vw; height: 28vw; right: 0; top: 22vh; animation-delay: -3s; }
+  .oobe-orb:nth-child(3) { width: 20vw; height: 20vw; left: 40vw; bottom: 4vh; animation-delay: -6s; }
+  .oobe-orb:nth-child(4) { width: 16vw; height: 16vw; right: 24vw; top: 8vh; animation-delay: -8s; }
+  .winui-progress {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .winui-progress span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #60cdff;
+    animation: winuiDot 1.25s ease-in-out infinite;
+  }
+  .winui-progress span:nth-child(2) { animation-delay: 0.15s; }
+  .winui-progress span:nth-child(3) { animation-delay: 0.3s; }
+  .winui-progress span:nth-child(4) { animation-delay: 0.45s; }
+  .oobe-title {
+    margin: 0;
+    color: #fbfdff;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .oobe-subtitle {
+    margin: 12px 0 28px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .theme-launch {
+    min-width: 168px;
+    min-height: 40px;
+    border: 0;
+    border-radius: 6px;
+    padding: 0 22px;
+    color: #ffffff;
+    background: linear-gradient(#0078d4, #0067c0);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 12px 30px rgba(0, 0, 0, 0.24);
+    font: 600 14px "Segoe UI Variable", "Segoe UI", -apple-system, Arial, sans-serif;
+    cursor: pointer;
+  }
+  .theme-launch:disabled {
+    opacity: 0.72;
+    cursor: default;
+  }
+  .theme-launch:active {
+    transform: translateY(1px);
+  }
+  body.theme-deltarune {
+    color: #ffffff;
+    background: #000000;
+    font-family: "8BitOperator", "Courier New", monospace;
+  }
+  body.theme-deltarune #theme-start-deltarune {
+    background: #000000;
+  }
+  .deltarune-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .deltarune-title {
+    margin: 0;
+    color: #ffffff;
+    font: 700 32px/1 "8BitOperator", "Courier New", monospace;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #2a2a2a;
+  }
+  .deltarune-box {
+    border: 4px solid #ffffff;
+    padding: 24px 32px;
+    min-width: 280px;
+    background: #000000;
+  }
+  body.theme-deltarune .theme-launch {
+    min-width: 226px;
+    min-height: 56px;
+    border: 4px solid #ffffff;
+    border-radius: 0;
+    color: #ffffff;
+    background: #000000;
+    box-shadow: none;
+    font: 700 18px "8BitOperator", "Courier New", monospace;
+    text-transform: uppercase;
+  }
+  body.theme-deltarune .theme-launch:focus,
+  body.theme-deltarune .theme-launch:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+  body.theme-deltarune #theme-picker {
+    background: #000000;
+    border-color: #ffffff;
+    border-radius: 0;
+  }
+  @keyframes oobeDrift {
+    from { background-position: 0 0, 0 0, 0 0, 0 0; }
+    to { background-position: 4vw -2vh, -5vw 3vh, 3vw 5vh, 0 0; }
+  }
+  @keyframes orbFloat {
+    0% { opacity: 0; transform: translate3d(-2vw, 2vh, 0) scale(0.82); }
+    18%, 76% { opacity: 0.58; }
+    100% { opacity: 0; transform: translate3d(3vw, -3vh, 0) scale(1.06); }
+  }
+  @keyframes winuiDot {
+    0%, 100% { opacity: 0.28; transform: translateY(0); }
+    45% { opacity: 1; transform: translateY(-6px); }
+  }
+  @media (max-width: 560px) {
+    #theme-picker {
+      left: 12px;
+      right: 12px;
+      justify-content: space-between;
+    }
+    #theme-select {
+      max-width: 180px;
+    }
+    .winui-card {
+      padding: 30px 24px 32px;
+    }
+    .oobe-title {
+      font-size: 26px;
+    }
+    .deltarune-title {
+      font-size: 26px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -426,6 +652,44 @@
   <!-- Background layers -->
   <div id="bg-layer"></div>
   <div id="droplets-layer"></div>
+
+  <div id="theme-picker">
+    <label for="theme-select">Theme</label>
+    <select id="theme-select">
+      <option value="spyware">TotallyNotSpyware</option>
+      <option value="oobe">Windows 11 OOBE</option>
+      <option value="deltarune">Deltarune</option>
+    </select>
+  </div>
+
+  <div id="theme-start-oobe" class="theme-start" aria-hidden="true">
+    <div class="oobe-orbs">
+      <div class="oobe-orb"></div>
+      <div class="oobe-orb"></div>
+      <div class="oobe-orb"></div>
+      <div class="oobe-orb"></div>
+    </div>
+    <div class="winui-card">
+      <div class="winui-progress" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1 class="oobe-title">This might take a few seconds.</h1>
+      <p class="oobe-subtitle">Don't turn off your PS4</p>
+      <button class="theme-launch" type="button" data-launch>Jailbreak PS4</button>
+    </div>
+  </div>
+
+  <div id="theme-start-deltarune" class="theme-start" aria-hidden="true">
+    <div class="deltarune-panel">
+      <div class="deltarune-box">
+        <h1 class="deltarune-title">Ready to jailbreak?</h1>
+      </div>
+      <button class="theme-launch" type="button" data-launch>JAILBREAK</button>
+    </div>
+  </div>
 
   <!-- iOS 6 Status Bar -->
   <div id="status-bar">
@@ -514,9 +778,37 @@
     var sliderLabel = document.getElementById("slider-label");
     var sliderWell = document.getElementById("slider-well");
     var sliderKnob = document.getElementById("slider-knob");
+    var themeSelect = document.getElementById("theme-select");
+    var themeButtons = document.querySelectorAll("[data-launch]");
 
     function setState(t, c) { stateEl.innerHTML = t; stateEl.className = c || ""; }
     function setCache(t, ok) { cacheEl.textContent = t; cacheEl.className = ok ? "cacheok" : ""; }
+    function themeFromUrl() {
+        var requested = new URLSearchParams(location.search).get("theme");
+        return /^(spyware|oobe|deltarune)$/.test(requested) ? requested : null;
+    }
+    function savedTheme() {
+        try {
+            var theme = themeFromUrl() || localStorage.getItem("site-theme") || "spyware";
+            return /^(spyware|oobe|deltarune)$/.test(theme) ? theme : "spyware";
+        } catch (e) {
+            return "spyware";
+        }
+    }
+    var activeTheme = savedTheme();
+    function applyTheme(theme) {
+        activeTheme = /^(spyware|oobe|deltarune)$/.test(theme) ? theme : "spyware";
+        document.body.classList.remove("theme-spyware", "theme-oobe", "theme-deltarune");
+        document.body.classList.add("theme-" + activeTheme);
+        if (themeSelect) themeSelect.value = activeTheme;
+        try { localStorage.setItem("site-theme", activeTheme); } catch (e) {}
+    }
+    applyTheme(activeTheme);
+    if (themeSelect) {
+        themeSelect.addEventListener("change", function () {
+            applyTheme(themeSelect.value);
+        });
+    }
 
     // Normal Computer (Linux, Windows, macOS, iOS, Android) Protection
     var ua = navigator.userAgent || "";
@@ -534,6 +826,10 @@
         sliderWell.classList.add("blocked");
         sliderKnob.style.cursor = "not-allowed";
         sliderKnob.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="#c0392b" style="display:block;"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>';
+        for (var pi = 0; pi < themeButtons.length; pi++) {
+            themeButtons[pi].disabled = true;
+            themeButtons[pi].textContent = "Open on PS4";
+        }
         return; // Fully block execution and interactions
     }
 
@@ -555,7 +851,14 @@
         + (supported ? " &middot; <span class='ok'>supported</span>"
                      : " &middot; not in this build's kernel table");
 
-    var target = "jb.html" + (location.search ? (location.search.indexOf("log=") >= 0 ? location.search : location.search + "&log=1") : "?log=1");
+    function buildTarget() {
+        var next = new URLSearchParams(location.search);
+        next.set("theme", activeTheme);
+        if (activeTheme === "spyware") next.set("log", "1");
+        else next.delete("log");
+        var query = next.toString();
+        return "jb.html" + (query ? "?" + query : "");
+    }
     var isLaunching = false;
 
     function go() {
@@ -563,6 +866,7 @@
         isLaunching = true;
         setState("loading jailbreak...", "warn");
         sliderLabel.textContent = "jailbreaking...";
+        var target = buildTarget();
         var maxSlide = sliderWell.clientWidth - sliderKnob.clientWidth - 8;
         sliderKnob.style.transition = "transform 0.25s ease-out, -webkit-transform 0.25s ease-out";
         sliderKnob.style.webkitTransition = "-webkit-transform 0.25s ease-out";
@@ -571,6 +875,10 @@
         setTimeout(function () {
             location.replace(target);
         }, 300);
+    }
+
+    for (var bi = 0; bi < themeButtons.length; bi++) {
+        themeButtons[bi].addEventListener("click", go);
     }
 
     // Interactive Slider Logic (Drag, Click, Key - Hardware Accelerated & Throttled)

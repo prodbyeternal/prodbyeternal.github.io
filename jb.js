@@ -48,10 +48,11 @@ function terse(s) {
 }
 
 const SHOW_LOG = params.get("log") === "1";
-if (SHOW_LOG && document.body) document.body.className = "log";
+if (SHOW_LOG && document.body) document.body.classList.add("log");
 function finishUI(ok) {
   if (SHOW_LOG || !document.body) return;
-  document.body.className = ok ? "done" : "fail";
+  document.body.classList.remove("done", "fail");
+  document.body.classList.add(ok ? "done" : "fail");
 }
 function mark(tag, detail) {
   const raw = detail;
